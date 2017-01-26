@@ -57,6 +57,8 @@
                 width: 100%;
                 text-align: center;
             }
+
+
         </style>
     </head>
     <body>
@@ -174,18 +176,20 @@
                     var sliderId = "slider" + getNumber;
                     var labelId = "powerPlug" + getNumber;
                     $("#"+labelId).html("Power: " + $(this).val() + " w");
-                    if(getNumber[0] == 1){
-                        opts1.color = ajustColor($(this).val());
-                        spinner1.spin(target1);
-                    }
-                    else if(getNumber[0] == 2)
-                    {
-                        opts2.color = ajustColor($(this).val());
-                        spinner2.spin(target2);
-                    }else if (getNumber[0] == 3){
-                        opts3.color = ajustColor($(this).val());
-                        spinner3.spin(target3);
-                    }
+                    //if(getNumber[0] == 1){
+                        //opts1.color = ajustColor($(this).val());
+                        //spinner1.spin(target1);
+                    //}
+                    //else if(getNumber[0] == 2)
+                    //{
+                        //opts2.color = ajustColor($(this).val());
+                        //spinner2.spin(target2);
+                    //}else if (getNumber[0] == 3){
+                        //opts3.color = ajustColor($(this).val());
+                        //spinner3.spin(target3);
+                        $("#"+sliderId).children().first().children().children().css("background-color",ajustColor($(this).val()));
+
+                    //}
              });
 
             //Gives me the right color for the measured value
