@@ -16,21 +16,46 @@
 
 
         <style>
-            #preview{
+            body{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                height: 100%;
+                width: 100%;
+            }
+
+
+            #slider1, #slider2, #slider3{
+                display: flex;
                 position: relative;
                 background: #333;
                 color: #fff;
                 float: left;
-                width: 375px;
-                height: 375px;
-                margin: 0 20px 20px 0;
+                min-width: 375px;
+                min-height: 450px;
+                margin: 0 auto 20px auto;
                 -webkit-border-radius: 10px;
                 -moz-border-radius: 10px;
                 border-radius: 10px;
             }
 
-            #slider{
+            .slidersRange{
+                align-self: flex-end;
                 width: 350px;
+                margin-right: auto;
+                margin-left:  auto;
+                margin-bottom: 10px;
+            }
+
+            #powerPlug1, #powerPlug2, #powerPlug3{
+                position: absolute;
+                top:10px;
+                right: 10px;
+            }
+
+            p{
+                width: 100%;
+                text-align: center;
             }
         </style>
     </head>
@@ -39,41 +64,49 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <!-- Add your site or application content here -->
-        <p>Enerspectrum interaction.</p>
+            <p>Enerspectrum Interaction Prototype</p>
+
+            <div id="slider1">
+                <label id="powerPlug1">Power 0 w</label>
+                <input id="slider1range" class="slidersRange" type="range" name="points" min="0" max="4400" value="0">
+            </div>
 
 
-        <div id="preview">
 
-        </div>
-        <label for="slider" id="sliderlabel">Power: 0 w</label>
-        <br>
-        <input id="slider" type="range" name="points" min="0" max="4400" value="0">
+            <div id="slider2">
+                <label id="powerPlug2">Power 0 w</label>
+                <input id="slider2range" class="slidersRange" type="range" name="points" min="0" max="4400" value="0">
+            </div>
 
+
+
+            <div id="slider3">
+                <label id="powerPlug3">Power 0 w</label>
+                <input id="slider3range" class="slidersRange" type="range" name="points" min="0" max="4400" value="0">
+            </div>
 
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
-        <script src="js/spin.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script src="js/spin.js"></script>
         <script>
-            var opts = {
-                lines: 20 // The number of lines to draw
+
+            var opts1 = {
+                lines: 17 // The number of lines to draw
                 , length: 0 // The length of each line
-                , width: 27 // The line thickness
-                , radius: 76 // The radius of the inner circle
-                , scale:  1.2// Scales overall size of the spinner
+                , width: 31 // The line thickness
+                , radius: 75 // The radius of the inner circle
+                , scale:  1// Scales overall size of the spinner
                 , corners: 1 // Corner roundness (0..1)
                 , color: '#2dff26' // #rgb or #rrggbb or array of colors
-                , opacity: 0 // Opacity of the lines
-                , rotate: 50 // The rotation offset
+                , opacity: 0.05 // Opacity of the lines
+                , rotate: 90 // The rotation offset
                 , direction: 1 // 1: clockwise, -1: counterclockwise
-                , speed: 1 // Rounds per second
-                , trail: 60 // Afterglow percentage
+                , speed: 0.5 // Rounds per second
+                , trail: 10 // Afterglow percentage
                 , fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
                 , zIndex: 2e9 // The z-index (defaults to 2000000000)
                 , className: 'spinner' // The CSS class to assign to the spinner
@@ -82,60 +115,115 @@
                 , shadow: false // Whether to render a shadow
                 , hwaccel: false // Whether to use hardware acceleration
                 , position: 'absolute' // Element positioning
-            }
-            var target = document.getElementById('preview');
-            var spinner = new Spinner(opts).spin(target);
+            };
+            var opts2 = {
+                lines: 17 // The number of lines to draw
+                , length: 0 // The length of each line
+                , width: 31 // The line thickness
+                , radius: 75 // The radius of the inner circle
+                , scale:  1// Scales overall size of the spinner
+                , corners: 1 // Corner roundness (0..1)
+                , color: '#2dff26' // #rgb or #rrggbb or array of colors
+                , opacity: 0.05 // Opacity of the lines
+                , rotate: 180 // The rotation offset
+                , direction: 1 // 1: clockwise, -1: counterclockwise
+                , speed: 0.5 // Rounds per second
+                , trail: 10 // Afterglow percentage
+                , fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
+                , zIndex: 2e9 // The z-index (defaults to 2000000000)
+                , className: 'spinner' // The CSS class to assign to the spinner
+                , top: '50%' // Top position relative to parent
+                , left: '50%' // Left position relative to parent
+                , shadow: false // Whether to render a shadow
+                , hwaccel: false // Whether to use hardware acceleration
+                , position: 'absolute' // Element positioning
+            };
+            var opts3 = {
+                lines: 17 // The number of lines to draw
+                , length: 0 // The length of each line
+                , width: 31 // The line thickness
+                , radius: 75 // The radius of the inner circle
+                , scale:  1// Scales overall size of the spinner
+                , corners: 1 // Corner roundness (0..1)
+                , color: '#2dff26' // #rgb or #rrggbb or array of colors
+                , opacity: 0.05 // Opacity of the lines
+                , rotate: 90 // The rotation offset
+                , direction: -1 // 1: clockwise, -1: counterclockwise
+                , speed: 0.5 // Rounds per second
+                , trail: 10 // Afterglow percentage
+                , fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
+                , zIndex: 2e9 // The z-index (defaults to 2000000000)
+                , className: 'spinner' // The CSS class to assign to the spinner
+                , top: '50%' // Top position relative to parent
+                , left: '50%' // Left position relative to parent
+                , shadow: false // Whether to render a shadow
+                , hwaccel: false // Whether to use hardware acceleration
+                , position: 'absolute' // Element positioning
+            };
+            var target1 = document.getElementById('slider1');
+            var target2 = document.getElementById('slider2');
+            var target3 = document.getElementById('slider3');
 
-            $("#slider").on("change",function(){
-                $("#sliderlabel").html("Power: " + $(this).val() + " w");
-                spinner.stop();
-                if($(this).val() >= 1000 ){
-                    //Red
-                    opts.color = "#ff131a";
-                    opts.speed = $(this).val() / 300;
-                }else if($(this).val() > 300 && $(this).val() < 1000){
-                    //Yellow
-                    opts.color = "#ffec07";
-                    opts.speed = $(this).val() / 300;
-                }else{
-                    //Green
-                    opts.color = "#2dff26";
-                    if($(this).val() === 0 ) {
-                        opts.speed = 1;
-                    }
-                    else{
-                        opts.speed = $(this).val() / 300;
-                    }
-                }
-                spinner.spin(target);
-            });
+            var spinner1 = new Spinner(opts1).spin(target1);
+            var spinner2 = new Spinner(opts2).spin(target2);
+            var spinner3 = new Spinner(opts3).spin(target3);
 
+
+             $(".slidersRange").on("change input",function(){
+                    var getNumber = $(this).attr('id').match(/\d+/); //using regex to extract the numeric value of the string -- Being Smart :P
+                    var sliderId = "slider" + getNumber;
+                    var labelId = "powerPlug" + getNumber;
+                    $("#"+labelId).html("Power: " + $(this).val() + " w");
+                    if(getNumber[0] == 1){
+                        opts1.color = ajustColor($(this).val());
+                        spinner1.spin(target1);
+                    }
+                    else if(getNumber[0] == 2)
+                    {
+                        opts2.color = ajustColor($(this).val());
+                        spinner2.spin(target2);
+                    }else if (getNumber[0] == 3){
+                        opts3.color = ajustColor($(this).val());
+                        spinner3.spin(target3);
+                    }
+             });
+
+            //Gives me the right color for the measured value
+             function ajustColor(valueNumber){
+                 if(valueNumber >= 1000 ){
+                     //Red
+                     return "#ff131a";
+                 }else if(valueNumber > 300 && valueNumber < 1000){
+                     //Yellow
+                     return "#ffec07";
+                 }else{
+                     //Green
+                     return "#2dff26";
+                 }
+             }
+/*
+            NOT NEEDED BECAUSE WE DONT NEED TO CHANGE THE VELOCITY RIGHT NOW.
             $("#slider").on("input", function () {
                 $("#sliderlabel").html("Power: " + $(this).val() + " w");
                 if($(this).val() >= 1000 ){
                     //Red
-                    spinner.stop();
+                    //spinner.stop();
                     opts.color = "#ff131a";
                     spinner.spin(target);
                 }else if($(this).val() > 300 && $(this).val() < 1000){
                     //Yellow
-                    spinner.stop();
+                    //spinner.stop();
                     opts.color = "#ffec07";
                     spinner.spin(target);
                 }else{
                     //Green
-                    spinner.stop();
+                    //spinner.stop();
                     opts.color = "#2dff26";
                     spinner.spin(target);
                 }
-            });
+            });*/
 
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='https://www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+
         </script>
     </body>
 </html>
